@@ -3,10 +3,7 @@ from bs4 import BeautifulSoup
 
 most_active = requests.get('https://finance.yahoo.com/most-active')
 
-# print(getpage.content)
 soup = BeautifulSoup(most_active.content, "html.parser")
-
-# test = soup.find_all('tr')[1].contents[9]
 
 symbol = soup.find_all('tr')[1].contents[0].string
 
@@ -26,4 +23,11 @@ marketCap = soup.find_all('tr')[1].contents[7].string
 
 peRatio = soup.find_all('tr')[1].contents[8].string
 
-print(peRatio)
+print("""
+---------------------------------------
+++++       Most Active Stocks      ++++
+---------------------------------------
+|+ one
+|+ two
+|+ three
+""")
