@@ -6,23 +6,24 @@ most_active = requests.get('https://finance.yahoo.com/most-active')
 # print(getpage.content)
 soup = BeautifulSoup(most_active.content, "html.parser")
 
+# test = soup.find_all('tr')[1].contents[9]
 
-item_num = 0
-for item in soup.find_all('tr')[1].contents:
-    item_num += 1
-    print(item_num)
-    print('````')
-    print(item.contents)
-    print('--------------------------------------------------------------------------')
+symbol = soup.find_all('tr')[1].contents[0].string
 
-# item_num = 0
-# for item in soup.find_all('tr'):
-#     item_num += 1
-#     print(item_num)
-#     print('`````````````````````````````````````````````````')
-#     # print(item.find_all('a'))
-#     print(item.find_all('td'))
-#     print   ("----------------------------------------------------------------------------------------------------------------------------------------------------")
+name = soup.find_all('tr')[1].contents[1].contents[1]
 
+stockPriceInDay = soup.find_all('tr')[1].contents[2].string
 
-# print(soup.find_all('tr')[1])
+stockChange = soup.find_all('tr')[1].contents[3].string
+
+stockPerChange = soup.find_all('tr')[1].contents[4].string
+
+stockVol = soup.find_all('tr')[1].contents[5].string
+
+avgVol = soup.find_all('tr')[1].contents[6].contents[1]
+
+marketCap = soup.find_all('tr')[1].contents[7].string
+
+peRatio = soup.find_all('tr')[1].contents[8].string
+
+print(peRatio)
